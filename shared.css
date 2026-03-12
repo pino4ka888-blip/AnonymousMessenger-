@@ -78,7 +78,7 @@ nav {
   display: flex; align-items: center; gap: 11px;
   text-decoration: none; cursor: pointer;
 }
-.nav-logo svg { width: 32px; height: 32px; flex-shrink: 0; }
+.nav-logo svg { width: 38px; height: 38px; flex-shrink: 0; }
 .nav-wordmark {
   font-family: 'JetBrains Mono', monospace;
   font-size: 17px; font-weight: 700;

@@ -141,7 +141,7 @@ const T = {
 
   // download page
   dl_k:    { ru:'установка', en:'installation' },
-  dl_t:    { ru:'Скачать ТЕНЬ', en:'Download ТЕНЬ' },
+  dl_t:    { ru:'Скачать ТЕ<em>Н</em>Ь', en:'Download ТЕ<em>Н</em>Ь' },
   dl_d:    { ru:'Доступно на всех платформах. Прямая установка без магазинов.',
              en:'Available on all platforms. Direct install without app stores.' },
   dl1_b:   { ru:'РЕКОМЕНДУЕТСЯ', en:'RECOMMENDED' },
