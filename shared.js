@@ -235,6 +235,15 @@ const T = {
   tm_p4:   { ru:'Мы вправе изменять условия. Продолжение использования сервиса после публикации новых условий означает ваше согласие.',
              en:'We may change the terms at any time. Continued use after new terms are published constitutes acceptance.' },
 
+
+  // platform buttons (home hero)
+  pf_android_l: { ru:'Android',            en:'Android' },
+  pf_android_s: { ru:'Скачать APK',        en:'Download APK' },
+  pf_ios_l:     { ru:'iPhone',             en:'iPhone' },
+  pf_ios_s:     { ru:'Открыть в Safari',   en:'Open in Safari' },
+  pf_web_l:     { ru:'Браузер',            en:'Browser' },
+  pf_web_s:     { ru:'Открыть онлайн',     en:'Open online' },
+
   // footer
   foot_copy: { ru:'© 2026 ТЕНЬ · ten-app.ru', en:'© 2026 ТЕНЬ · ten-app.ru' },
 };
