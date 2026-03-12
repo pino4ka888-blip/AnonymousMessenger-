@@ -5,141 +5,161 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Скачать — ТЕНЬ</title>
 <meta name="theme-color" content="#080a0f">
-<meta name="color-scheme" content="dark">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="shared.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-/* ── override: убрать марджин sec-lead на этой странице ── */
-.sec-lead { margin-bottom: 0; }
-
-/* ── заголовок страницы с зелёной Н ── */
-.page-heading {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: clamp(26px,4vw,42px);
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: #e2e8f0;
-  line-height: 1.15;
-  margin-bottom: 14px;
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080a0f;--surface:#0e1117;--panel:#131720;--border:#1a2030;
+  --accent:#00e5a0;--text:#e2e8f0;--muted:#7a8fa8;
 }
-.page-heading .nh { font-style: normal; color: #00e5a0; }
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',sans-serif;
+     line-height:1.6;overflow-x:hidden;-webkit-text-size-adjust:100%}
+a,button{-webkit-tap-highlight-color:transparent}
 
-/* ── download grid ── */
-.dl-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-  margin-top: 44px;
-  align-items: stretch;
-}
-@media(max-width: 860px) { .dl-grid { grid-template-columns: 1fr; } }
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:60px;
+    display:flex;align-items:center;justify-content:space-between;padding:0 48px;
+    background:rgba(8,10,15,.9);-webkit-backdrop-filter:blur(24px);backdrop-filter:blur(24px);
+    border-bottom:1px solid var(--border)}
+.nav-logo{display:flex;align-items:center;text-decoration:none;cursor:pointer}
+.nav-wordmark{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;
+              letter-spacing:6px;color:var(--text)}
+.nav-wordmark em{font-style:normal;color:var(--accent)}
+.nav-center{display:flex;align-items:center;gap:4px}
+.nav-center a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;
+              font-weight:500;color:var(--muted);text-decoration:none;padding:6px 13px;
+              border-radius:6px;transition:color .18s,background .18s}
+.nav-center a:hover,.nav-center a.active{color:var(--accent)}
+.nav-right{display:flex;align-items:center;gap:16px}
+.lang-switch{display:flex;align-items:center;gap:2px;border:1px solid var(--border);
+             border-radius:7px;overflow:hidden}
+.lang-switch button{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;
+                    background:none;border:none;cursor:pointer;color:var(--muted);padding:5px 11px;
+                    transition:all .18s}
+.lang-switch button.on{background:rgba(0,229,160,.1);color:var(--accent)}
+.nav-cta{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;
+         font-weight:700;color:#000;background:var(--accent);padding:7px 16px;
+         border-radius:7px;text-decoration:none}
+.nav-burger{display:none;background:none;border:none;cursor:pointer;color:var(--muted);padding:4px}
 
-/* ── карточка ── */
-.dlcard {
-  display: flex;
-  flex-direction: column;
-  background: #0e1117;
-  border: 1px solid #1a2030;
-  border-radius: 16px;
-  padding: 26px 22px 20px;
-  transition: border-color .2s, transform .2s;
-  position: relative;
-  overflow: hidden;
-}
-.dlcard::after {
-  content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 2px;
-  background: #00e5a0;
-  transform: scaleX(0);
-  transition: transform .3s;
-  transform-origin: center;
-}
-.dlcard:hover { border-color: rgba(0,229,160,.3); transform: translateY(-3px); }
-.dlcard:hover::after { transform: scaleX(1); }
-.dlcard.feat {
-  border-color: rgba(0,229,160,.32);
-  background: linear-gradient(135deg, rgba(0,229,160,.05), #0e1117);
-}
+/* WRAP */
+.page-wrap{padding-top:60px}
+.sec{max-width:1080px;margin:0 auto;padding:72px 40px}
 
-/* ── бейдж (РЕКОМЕНДУЕТСЯ / iOS / ВСЕ БРАУЗЕРЫ) — КРУПНЫЙ ── */
-.dl-badge {
-  display: inline-block;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;                /* <-- было 8px на старом сайте, теперь 11px */
-  letter-spacing: 2px;
-  padding: 5px 12px;
-  border-radius: 20px;
-  background: rgba(0,229,160,.1);
-  color: #00e5a0;
-  border: 1px solid rgba(0,229,160,.25);
-  margin-bottom: 20px;
-  align-self: flex-start;
-}
+/* KICKER */
+.sec-kicker{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:4px;
+            color:var(--accent);text-transform:uppercase;margin-bottom:14px}
 
-/* ── SVG иконка ── */
-.dl-icon { width: 52px; height: 52px; margin-bottom: 16px; flex-shrink: 0; }
-.dl-icon svg { width: 52px; height: 52px; }
+/* PAGE TITLE */
+.page-heading{font-family:'JetBrains Mono',monospace;font-size:clamp(26px,4vw,42px);
+              font-weight:700;letter-spacing:1px;color:var(--text);line-height:1.15;margin-bottom:14px}
+.page-heading .nh{font-style:normal;color:var(--accent)}
 
-/* ── название платформы ── */
-.dl-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 15px; font-weight: 700;
-  letter-spacing: 1.5px; color: #e2e8f0;
-  margin-bottom: 8px;
-}
+/* SUBTITLE */
+.sec-lead{font-size:16px;color:var(--muted);line-height:1.75;max-width:540px;margin-bottom:0}
 
-/* ── описание ── */
-.dl-desc {
-  font-size: 13px; color: #7a8fa8;
-  line-height: 1.65; margin-bottom: 16px;
-}
+/* GRID */
+.dl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px;align-items:stretch}
 
-/* ── блок инструкции ── */
-.dl-steps {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;               /* <-- было 11px на старом сайте, теперь 13px */
-  color: #7a8fa8;
-  line-height: 2.2;
-  text-align: left;
-  background: rgba(0,0,0,.3);
-  border-radius: 8px;
-  padding: 14px 16px;
-  border: 1px solid #1a2030;
-  flex: 1;
-  margin-bottom: 18px;
-}
-.dl-steps span { display: block; }
+/* CARD */
+.dlcard{display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--border);
+        border-radius:16px;padding:26px 22px 20px;transition:border-color .2s,transform .2s;
+        position:relative;overflow:hidden}
+.dlcard::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+               background:var(--accent);transform:scaleX(0);transition:transform .3s;transform-origin:center}
+.dlcard:hover{border-color:rgba(0,229,160,.3);transform:translateY(-3px)}
+.dlcard:hover::after{transform:scaleX(1)}
+.dlcard.feat{border-color:rgba(0,229,160,.32);
+             background:linear-gradient(135deg,rgba(0,229,160,.05),var(--surface))}
 
-/* ── заголовок «КАК УСТАНОВИТЬ» внутри блока — КРУПНЫЙ ── */
-.dl-how {
-  color: #00e5a0 !important;
-  font-size: 11px !important;    /* <-- было 8px на старом сайте, теперь 11px */
-  letter-spacing: 3px;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
+/* BADGE — зелёная подпись РЕКОМЕНДУЕТСЯ / iOS / БРАУЗЕР */
+.dl-badge{display:inline-block;
+          font-family:'JetBrains Mono',monospace !important;
+          font-size:13px !important;
+          line-height:1.4 !important;
+          letter-spacing:2px;
+          padding:5px 13px;border-radius:20px;
+          background:rgba(0,229,160,.1);color:#00e5a0 !important;
+          border:1px solid rgba(0,229,160,.25);
+          margin-bottom:20px;align-self:flex-start}
 
-/* ── кнопка всегда у нижнего края карточки ── */
-.dlcard .btn {
-  margin-top: auto;
-  width: 100%;
-  justify-content: center;
-  padding: 12px 20px;
-  font-size: 11px;
+/* ICON */
+.dl-icon{width:52px;height:52px;margin-bottom:16px;flex-shrink:0}
+.dl-icon svg{width:52px;height:52px}
+
+/* TITLE */
+.dl-title{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:700;
+          letter-spacing:1.5px;color:var(--text);margin-bottom:8px}
+
+/* DESC */
+.dl-desc{font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:16px}
+
+/* STEPS BOX */
+.dl-steps{background:rgba(0,0,0,.3);border-radius:8px;padding:14px 16px;
+          border:1px solid var(--border);flex:1;margin-bottom:18px}
+
+/* КАК УСТАНОВИТЬ — зелёный заголовок */
+.dl-steps .dl-how{display:block;
+                  font-family:'JetBrains Mono',monospace !important;
+                  font-size:13px !important;
+                  line-height:1.6 !important;
+                  color:#00e5a0 !important;
+                  letter-spacing:3px;font-weight:700;margin-bottom:10px}
+
+/* шаги 1-4 */
+.dl-steps .dl-step{display:block;
+                   font-family:'JetBrains Mono',monospace !important;
+                   font-size:13px !important;
+                   line-height:2.1 !important;
+                   color:var(--muted) !important}
+
+/* BUTTON */
+.dlcard .dl-btn{margin-top:auto;width:100%;display:flex;align-items:center;justify-content:center;
+                gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;
+                letter-spacing:1px;padding:12px 20px;border-radius:9px;text-decoration:none;
+                border:none;cursor:pointer;transition:all .2s;white-space:nowrap}
+.dl-btn-solid{background:var(--accent);color:#000}
+.dl-btn-solid:hover{background:#00ffb0;transform:translateY(-2px);box-shadow:0 8px 28px rgba(0,229,160,.28)}
+.dl-btn-outline{background:none;color:var(--accent);border:1px solid rgba(0,229,160,.35)}
+.dl-btn-outline:hover{border-color:var(--accent);background:rgba(0,229,160,.06);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:36px 48px;
+       display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.foot-logo{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
+           letter-spacing:5px;color:var(--muted)}
+.foot-logo em{font-style:normal;color:var(--accent)}
+.foot-links{display:flex;gap:22px;flex-wrap:wrap}
+.foot-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;
+              color:var(--muted);text-decoration:none;transition:color .18s}
+.foot-links a:hover{color:var(--accent)}
+.foot-copy{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.5px;
+           color:rgba(122,143,168,.35)}
+
+/* MOBILE */
+@media(max-width:860px){
+  .dl-grid{grid-template-columns:1fr}
+  nav{padding:0 18px}
+  .nav-center{display:none}
+  .nav-center.open{display:flex;flex-direction:column;align-items:flex-start;
+                   position:fixed;top:60px;left:0;right:0;background:var(--bg);
+                   border-bottom:1px solid var(--border);padding:12px 18px;gap:2px;z-index:499}
+  .nav-burger{display:block}
+  .sec{padding:52px 18px}
+  footer{padding:24px 18px;flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════ NAV ═══════════════════════ -->
 <nav>
   <a class="nav-logo" href="index.html">
-    <!-- ТОЛЬКО ТЕКСТ, без SVG пиктограммы -->
     <span class="nav-wordmark">ТЕ<em>Н</em>Ь</span>
   </a>
-
   <div class="nav-center" id="nav-center">
     <a href="index.html"    data-t="nav_home">ГЛАВНАЯ</a>
     <a href="about.html"    data-t="nav_about">О ПРОЕКТЕ</a>
@@ -147,202 +167,173 @@
     <a href="download.html" class="active" data-t="nav_download">СКАЧАТЬ</a>
     <a href="privacy.html"  data-t="nav_privacy">ПРИВАТНОСТЬ</a>
   </div>
-
   <div class="nav-right">
     <div class="lang-switch">
       <button id="btn-ru" onclick="setLang('ru')" class="on">RU</button>
       <button id="btn-en" onclick="setLang('en')">EN</button>
     </div>
     <a class="nav-cta" href="https://ten-app.ru" target="_blank" data-t="nav_open">ОТКРЫТЬ →</a>
-    <button class="nav-burger" id="burger">
+    <button class="nav-burger" id="burger" onclick="document.getElementById('nav-center').classList.toggle('open')">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="3" y1="6" x2="21" y2="6"/>
-        <line x1="3" y1="12" x2="21" y2="12"/>
-        <line x1="3" y1="18" x2="21" y2="18"/>
+        <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
       </svg>
     </button>
   </div>
 </nav>
 
-<!-- ═══════════════════════ CONTENT ═══════════════════════ -->
 <div class="page-wrap">
-  <div class="sec">
-    <div class="sec-kicker" data-t="dl_k">установка</div>
+<div class="sec">
 
-    <!-- ЗАГОЛОВОК: зелёная Н захардкожена, не зависит от JS -->
-    <h1 class="page-heading">Скачать&nbsp;ТЕ<span class="nh">Н</span>Ь</h1>
+  <div class="sec-kicker" data-t="dl_k">установка</div>
+  <h1 class="page-heading">Скачать&nbsp;ТЕ<span class="nh">Н</span>Ь</h1>
+  <p class="sec-lead" data-t="dl_d">Доступно на всех платформах. Прямая установка без магазинов.</p>
 
-    <p class="sec-lead" data-t="dl_d">Доступно на всех платформах. Прямая установка без магазинов.</p>
+  <div class="dl-grid">
 
-    <div class="dl-grid reveal">
+    <!-- ══ Android ══ -->
+    <div class="dlcard feat">
 
-      <!-- ────── Android APK ────── -->
-      <div class="dlcard feat">
-        <div class="dl-badge">РЕКОМЕНДУЕТСЯ</div>
+      <!-- РЕКОМЕНДУЕТСЯ — font-size задан inline, перебить невозможно -->
+      <span class="dl-badge" style="font-size:13px!important;color:#00e5a0!important">РЕКОМЕНДУЕТСЯ</span>
 
-        <div class="dl-icon">
-          <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#00e5a0"/>
-                <stop offset="100%" stop-color="#00b87a"/>
-              </linearGradient>
-            </defs>
-            <!-- голова / дуга -->
-            <path d="M13 26C13 17.163 19.163 11 28 11C36.837 11 43 17.163 43 26"
-                  stroke="url(#ag)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
-            <!-- антенны -->
-            <line x1="19" y1="11" x2="15" y2="6"  stroke="url(#ag)" stroke-width="2" stroke-linecap="round"/>
-            <line x1="37" y1="11" x2="41" y2="6"  stroke="url(#ag)" stroke-width="2" stroke-linecap="round"/>
-            <!-- глаза -->
-            <circle cx="22" cy="21" r="2.2" fill="#00e5a0"/>
-            <circle cx="34" cy="21" r="2.2" fill="#00e5a0"/>
-            <!-- тело -->
-            <rect x="11" y="25" width="34" height="20" rx="6" stroke="url(#ag)" stroke-width="2.2" fill="none"/>
-            <!-- руки -->
-            <rect x="3"  y="27" width="6" height="13" rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
-            <rect x="43" y="27" width="6" height="13" rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
-            <!-- ноги -->
-            <rect x="17" y="45" width="6" height="7" rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
-            <rect x="29" y="45" width="6" height="7" rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
-          </svg>
-        </div>
-
-        <div class="dl-title" data-t="dl1_t">Android APK</div>
-        <div class="dl-desc"  data-t="dl1_d">Нативное приложение. Прямая установка без Google Play.</div>
-
-        <div class="dl-steps">
-          <span class="dl-how">КАК УСТАНОВИТЬ</span>
-          <span>1. Скачайте APK-файл</span>
-          <span>2. Разрешите установку из неизвестных источников</span>
-          <span>3. Откройте скачанный файл</span>
-          <span>4. Установите и запустите</span>
-        </div>
-
-        <a class="btn btn-solid" href="https://pino4ka888-blip.github.io/AnonymousMessenger-/ten.apk">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
-            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
-            <polyline points="7 10 12 15 17 10"/>
-            <line x1="12" y1="15" x2="12" y2="3"/>
-          </svg>
-          <span data-t="dl1_btn">Скачать APK</span>
-        </a>
+      <div class="dl-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ag" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00e5a0"/><stop offset="100%" stop-color="#00b87a"/>
+          </linearGradient></defs>
+          <path d="M13 26C13 17.163 19.163 11 28 11C36.837 11 43 17.163 43 26"
+                stroke="url(#ag)" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <line x1="19" y1="11" x2="15" y2="6"  stroke="url(#ag)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="37" y1="11" x2="41" y2="6"  stroke="url(#ag)" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="22" cy="21" r="2.2" fill="#00e5a0"/>
+          <circle cx="34" cy="21" r="2.2" fill="#00e5a0"/>
+          <rect x="11" y="25" width="34" height="20" rx="6" stroke="url(#ag)" stroke-width="2.2" fill="none"/>
+          <rect x="3"  y="27" width="6"  height="13" rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
+          <rect x="43" y="27" width="6"  height="13" rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
+          <rect x="17" y="45" width="6"  height="7"  rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
+          <rect x="29" y="45" width="6"  height="7"  rx="3" stroke="url(#ag)" stroke-width="2" fill="none"/>
+        </svg>
       </div>
 
-      <!-- ────── iPhone PWA ────── -->
-      <div class="dlcard">
-        <div class="dl-badge">iOS / iPHONE</div>
+      <div class="dl-title" data-t="dl1_t">Android APK</div>
+      <div class="dl-desc"  data-t="dl1_d">Нативное приложение. Прямая установка без Google Play.</div>
 
-        <div class="dl-icon">
-          <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ig" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#00e5a0"/>
-                <stop offset="100%" stop-color="#00b87a"/>
-              </linearGradient>
-            </defs>
-            <!-- корпус телефона -->
-            <rect x="12" y="3" width="28" height="46" rx="6" stroke="url(#ig)" stroke-width="2.2" fill="none"/>
-            <!-- нотч -->
-            <line x1="21" y1="8"  x2="31" y2="8"  stroke="url(#ig)" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
-            <!-- домой индикатор -->
-            <line x1="21" y1="44" x2="31" y2="44" stroke="url(#ig)" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- стрелка «поделиться» вверх -->
-            <line x1="26" y1="32" x2="26" y2="18" stroke="url(#ig)" stroke-width="2.2" stroke-linecap="round"/>
-            <polyline points="20,24 26,18 32,24" stroke="url(#ig)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <!-- рамка «поделиться» -->
-            <path d="M19 28 H16 V37 H36 V28 H33" stroke="url(#ig)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-          </svg>
-        </div>
-
-        <div class="dl-title" data-t="dl2_t">iPhone PWA</div>
-        <div class="dl-desc"  data-t="dl2_d">Добавьте на экран через Safari. Работает как нативное с уведомлениями.</div>
-
-        <div class="dl-steps">
-          <span class="dl-how">КАК УСТАНОВИТЬ</span>
-          <span>1. Откройте ten-app.ru в Safari</span>
-          <span>2. Нажмите кнопку «Поделиться» ⬆</span>
-          <span>3. Выберите «На экран Домой»</span>
-          <span>4. Нажмите «Добавить»</span>
-        </div>
-
-        <a class="btn btn-outline" href="https://ten-app.ru" target="_blank">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-            <polyline points="15 3 21 3 21 9"/>
-            <line x1="10" y1="14" x2="21" y2="3"/>
-          </svg>
-          <span data-t="dl2_btn">Открыть в Safari</span>
-        </a>
+      <div class="dl-steps">
+        <!-- КАК УСТАНОВИТЬ — font-size задан inline -->
+        <span class="dl-how" style="font-size:13px!important;color:#00e5a0!important;display:block;font-family:'JetBrains Mono',monospace;letter-spacing:3px;font-weight:700;margin-bottom:10px">КАК УСТАНОВИТЬ</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">1. Скачайте APK-файл</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">2. Разрешите установку из неизвестных источников</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">3. Откройте скачанный файл</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">4. Установите и запустите</span>
       </div>
 
-      <!-- ────── Браузер ────── -->
-      <div class="dlcard">
-        <div class="dl-badge">ВСЕ БРАУЗЕРЫ</div>
-
-        <div class="dl-icon">
-          <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="wg" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0%" stop-color="#00e5a0"/>
-                <stop offset="100%" stop-color="#00b87a"/>
-              </linearGradient>
-            </defs>
-            <!-- монитор -->
-            <rect x="4" y="6" width="44" height="30" rx="4" stroke="url(#wg)" stroke-width="2.2" fill="none"/>
-            <!-- адресная строка -->
-            <line x1="4" y1="14" x2="48" y2="14" stroke="url(#wg)" stroke-width="1.5" opacity="0.4"/>
-            <!-- три точки браузера -->
-            <circle cx="11" cy="10" r="1.6" fill="#00e5a0" opacity="0.6"/>
-            <circle cx="17" cy="10" r="1.6" fill="#00e5a0" opacity="0.35"/>
-            <circle cx="23" cy="10" r="1.6" fill="#00e5a0" opacity="0.18"/>
-            <!-- замок в адресной строке -->
-            <rect x="37" y="7.5" width="6" height="5" rx="1.2" stroke="url(#wg)" stroke-width="1.3" fill="none"/>
-            <path d="M38.5 9 C38.5 6.8 43.5 6.8 43.5 9" stroke="url(#wg)" stroke-width="1.3" stroke-linecap="round" fill="none"/>
-            <!-- строки контента -->
-            <line x1="10" y1="22" x2="42" y2="22" stroke="url(#wg)" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
-            <line x1="10" y1="27" x2="37" y2="27" stroke="url(#wg)" stroke-width="2" stroke-linecap="round" opacity="0.3"/>
-            <line x1="10" y1="32" x2="30" y2="32" stroke="url(#wg)" stroke-width="2" stroke-linecap="round" opacity="0.15"/>
-            <!-- ножка -->
-            <line x1="26" y1="36" x2="26" y2="43" stroke="url(#wg)" stroke-width="2.2" stroke-linecap="round"/>
-            <line x1="17" y1="43" x2="35" y2="43" stroke="url(#wg)" stroke-width="2.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-
-        <div class="dl-title" data-t="dl3_t">Веб-версия</div>
-        <div class="dl-desc"  data-t="dl3_d">Работает в любом браузере на любом устройстве. Установка не нужна.</div>
-
-        <div class="dl-steps">
-          <span class="dl-how">КАК ЗАПУСТИТЬ</span>
-          <span>1. Откройте ten-app.ru</span>
-          <span>2. Создайте или войдите в комнату</span>
-          <span>3. Готово</span>
-        </div>
-
-        <a class="btn btn-outline" href="https://ten-app.ru" target="_blank">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <circle cx="12" cy="12" r="10"/>
-            <line x1="2" y1="12" x2="22" y2="12"/>
-            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-          </svg>
-          <span data-t="dl3_btn">Открыть в браузере</span>
-        </a>
-      </div>
-
-    </div><!-- /dl-grid -->
-  </div><!-- /sec -->
-
-  <footer>
-    <div class="foot-logo">ТЕ<em>Н</em>Ь</div>
-    <div class="foot-links">
-      <a href="index.html"    data-t="nav_home">ГЛАВНАЯ</a>
-      <a href="features.html" data-t="nav_features">ФУНКЦИИ</a>
-      <a href="privacy.html"  data-t="nav_privacy">ПРИВАТНОСТЬ</a>
-      <a href="terms.html"    data-t="nav_terms">УСЛОВИЯ</a>
+      <a class="dl-btn dl-btn-solid" href="https://pino4ka888-blip.github.io/AnonymousMessenger-/ten.apk">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span data-t="dl1_btn">Скачать APK</span>
+      </a>
     </div>
-    <div class="foot-copy" data-t="foot_copy">© 2026 ТЕНЬ</div>
-  </footer>
-</div>
+
+    <!-- ══ iPhone ══ -->
+    <div class="dlcard">
+
+      <span class="dl-badge" style="font-size:13px!important;color:#00e5a0!important">iOS / iPHONE</span>
+
+      <div class="dl-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="ig" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00e5a0"/><stop offset="100%" stop-color="#00b87a"/>
+          </linearGradient></defs>
+          <rect x="12" y="3" width="28" height="46" rx="6" stroke="url(#ig)" stroke-width="2.2" fill="none"/>
+          <line x1="21" y1="8"  x2="31" y2="8"  stroke="url(#ig)" stroke-width="2" stroke-linecap="round" opacity="0.45"/>
+          <line x1="21" y1="44" x2="31" y2="44" stroke="url(#ig)" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="26" y1="32" x2="26" y2="18" stroke="url(#ig)" stroke-width="2.2" stroke-linecap="round"/>
+          <polyline points="20,24 26,18 32,24" stroke="url(#ig)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <path d="M19 28 H16 V37 H36 V28 H33" stroke="url(#ig)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </div>
+
+      <div class="dl-title" data-t="dl2_t">iPhone PWA</div>
+      <div class="dl-desc"  data-t="dl2_d">Добавьте на экран через Safari. Работает как нативное с уведомлениями.</div>
+
+      <div class="dl-steps">
+        <span class="dl-how" style="font-size:13px!important;color:#00e5a0!important;display:block;font-family:'JetBrains Mono',monospace;letter-spacing:3px;font-weight:700;margin-bottom:10px">КАК УСТАНОВИТЬ</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">1. Откройте ten-app.ru в Safari</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">2. Нажмите кнопку «Поделиться» ⬆</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">3. Выберите «На экран Домой»</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">4. Нажмите «Добавить»</span>
+      </div>
+
+      <a class="dl-btn dl-btn-outline" href="https://ten-app.ru" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+          <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+        </svg>
+        <span data-t="dl2_btn">Открыть в Safari</span>
+      </a>
+    </div>
+
+    <!-- ══ Браузер ══ -->
+    <div class="dlcard">
+
+      <span class="dl-badge" style="font-size:13px!important;color:#00e5a0!important">ВСЕ БРАУЗЕРЫ</span>
+
+      <div class="dl-icon">
+        <svg viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#00e5a0"/><stop offset="100%" stop-color="#00b87a"/>
+          </linearGradient></defs>
+          <rect x="4"  y="6" width="44" height="30" rx="4" stroke="url(#wg)" stroke-width="2.2" fill="none"/>
+          <line x1="4" y1="14" x2="48" y2="14" stroke="url(#wg)" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="11" cy="10" r="1.6" fill="#00e5a0" opacity="0.6"/>
+          <circle cx="17" cy="10" r="1.6" fill="#00e5a0" opacity="0.35"/>
+          <circle cx="23" cy="10" r="1.6" fill="#00e5a0" opacity="0.18"/>
+          <rect x="37" y="7.5" width="6" height="5" rx="1.2" stroke="url(#wg)" stroke-width="1.3" fill="none"/>
+          <path d="M38.5 9C38.5 6.8 43.5 6.8 43.5 9" stroke="url(#wg)" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+          <line x1="10" y1="22" x2="42" y2="22" stroke="url(#wg)" stroke-width="2"   stroke-linecap="round" opacity="0.55"/>
+          <line x1="10" y1="27" x2="37" y2="27" stroke="url(#wg)" stroke-width="2"   stroke-linecap="round" opacity="0.3"/>
+          <line x1="10" y1="32" x2="30" y2="32" stroke="url(#wg)" stroke-width="2"   stroke-linecap="round" opacity="0.15"/>
+          <line x1="26" y1="36" x2="26" y2="43" stroke="url(#wg)" stroke-width="2.2" stroke-linecap="round"/>
+          <line x1="17" y1="43" x2="35" y2="43" stroke="url(#wg)" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <div class="dl-title" data-t="dl3_t">Веб-версия</div>
+      <div class="dl-desc"  data-t="dl3_d">Работает в любом браузере на любом устройстве. Установка не нужна.</div>
+
+      <div class="dl-steps">
+        <span class="dl-how" style="font-size:13px!important;color:#00e5a0!important;display:block;font-family:'JetBrains Mono',monospace;letter-spacing:3px;font-weight:700;margin-bottom:10px">КАК ЗАПУСТИТЬ</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">1. Откройте ten-app.ru</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">2. Создайте или войдите в комнату</span>
+        <span class="dl-step" style="font-size:13px!important;display:block;font-family:'JetBrains Mono',monospace;line-height:2.1;color:#7a8fa8">3. Готово</span>
+      </div>
+
+      <a class="dl-btn dl-btn-outline" href="https://ten-app.ru" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+          <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        </svg>
+        <span data-t="dl3_btn">Открыть в браузере</span>
+      </a>
+    </div>
+
+  </div><!-- /dl-grid -->
+</div><!-- /sec -->
+
+<footer>
+  <div class="foot-logo">ТЕ<em>Н</em>Ь</div>
+  <div class="foot-links">
+    <a href="index.html"    data-t="nav_home">ГЛАВНАЯ</a>
+    <a href="features.html" data-t="nav_features">ФУНКЦИИ</a>
+    <a href="privacy.html"  data-t="nav_privacy">ПРИВАТНОСТЬ</a>
+    <a href="terms.html"    data-t="nav_terms">УСЛОВИЯ</a>
+  </div>
+  <div class="foot-copy">© 2026 ТЕНЬ</div>
+</footer>
+</div><!-- /page-wrap -->
 
 <script src="shared.js"></script>
 </body>
