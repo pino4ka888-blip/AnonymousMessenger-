@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>О проекте — ТЕНЬ</title>
+<meta name="theme-color" content="#080a0f">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="shared.css">
+<style>
+.about-hero{text-align:center;padding:90px 40px 60px;max-width:700px;margin:0 auto}
+.big-q{font-family:'JetBrains Mono',monospace;font-size:clamp(18px,2.8vw,26px);font-weight:400;line-height:1.65;color:var(--text);letter-spacing:.5px;margin-bottom:20px}
+.big-q em{font-style:normal;color:var(--accent)}
+.about-p{font-size:16px;color:var(--muted);line-height:1.75;max-width:540px;margin:0 auto}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <svg width="32" height="32" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="22" fill="#080a0f"/><path d="M36 47C36 34 64 34 64 47" stroke="rgba(0,229,160,.2)" stroke-width="13" stroke-linecap="round" fill="none"/><path d="M36 47C36 34 64 34 64 47" stroke="#00e5a0" stroke-width="5.5" stroke-linecap="round" fill="none"/><rect x="27" y="46" width="46" height="33" rx="9" fill="#0e1117" stroke="#00e5a0" stroke-width="2.5"/><circle cx="50" cy="60" r="5.5" fill="#00e5a0" opacity=".9"/><rect x="47.8" y="60" width="4.4" height="8" rx="1.5" fill="#080a0f"/><text x="50" y="92" font-family="JetBrains Mono,monospace" font-size="15" font-weight="700" letter-spacing="3" fill="#00e5a0" text-anchor="middle">ТЕНЬ</text></svg>
+    <span class="nav-wordmark">ТЕ<em>Н</em>Ь</span>
+  </a>
+  <div class="nav-center" id="nav-center">
+    <a href="index.html" data-t="nav_home">ГЛАВНАЯ</a>
+    <a href="about.html" class="active" data-t="nav_about">О ПРОЕКТЕ</a>
+    <a href="features.html" data-t="nav_features">ФУНКЦИИ</a>
+    <a href="download.html" data-t="nav_download">СКАЧАТЬ</a>
+    <a href="privacy.html" data-t="nav_privacy">ПРИВАТНОСТЬ</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch"><button id="btn-ru" onclick="setLang('ru')" class="on">RU</button><button id="btn-en" onclick="setLang('en')">EN</button></div>
+    <a class="nav-cta" href="https://ten-app.ru" target="_blank" data-t="nav_open">ОТКРЫТЬ →</a>
+    <button class="nav-burger" id="burger"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="about-hero">
+    <div class="sec-kicker" data-t="ab_k">о проекте</div>
+    <div class="big-q" data-t="ab_big">«Каждый разговор должен иметь право <em>исчезнуть</em>»</div>
+    <p class="about-p" data-t="ab_p">ТЕНЬ — мессенджер, созданный с нуля с одной идеей: общение не должно оставлять следов без вашего желания. Никаких аккаунтов, никакой истории, никаких метаданных.</p>
+  </div>
+
+  <div class="glow-rule"></div>
+
+  <!-- IDEA -->
+  <div class="sec reveal">
+    <div class="sec-kicker" style="margin-bottom:36px">—</div>
+    <div class="split2">
+      <div class="scard hi">
+        <div class="scard-kicker" data-t="ab_prob_k">Проблема</div>
+        <div class="scard-t" data-t="ab_prob_t">Современные мессенджеры знают о вас слишком много</div>
+        <div class="scard-d" data-t="ab_prob_d">Telegram хранит всю историю. WhatsApp требует телефон. Signal привязан к устройству. Все знают, с кем и когда вы общаетесь.</div>
+        <ul class="tick-list">
+          <li class="no" data-t="pr_l1">Имена, email, номера телефонов</li>
+          <li class="no" data-t="pr_l2">IP-адреса пользователей</li>
+          <li class="no" data-t="pr_l3">Геолокация</li>
+          <li class="no" data-t="pr_l4">Список контактов устройства</li>
+        </ul>
+      </div>
+      <div class="scard">
+        <div class="scard-kicker" data-t="ab_sol_k">Решение</div>
+        <div class="scard-t" data-t="ab_sol_t">Минимум данных по архитектуре</div>
+        <div class="scard-d" data-t="ab_sol_d">ТЕНЬ не хранит данные дольше необходимого. Комнаты временные. Ники — псевдонимы. Сервер — маршрутизатор, сообщения живут 5 минут.</div>
+        <ul class="tick-list">
+          <li>0 регистраций</li>
+          <li>5 минут — время жизни сообщений</li>
+          <li>E2E при разговоре вдвоём</li>
+          <li>Сервер не видит расшифрованные данные</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="glow-rule"></div>
+
+  <!-- STACK -->
+  <div class="sec reveal">
+    <div class="sec-kicker" data-t="tech_k">технологии</div>
+    <h2 class="sec-title" data-t="tech_t">Стек</h2>
+    <p class="sec-lead" data-t="tech_d">Весь проект — несколько сотен строк без фреймворков на фронтенде.</p>
+
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span class="term-label">ten-app · stack</span>
+      </div>
+      <div class="term-body">
+        <div><span class="tc">backend  </span><span class="th">Python · Flask · Flask-SocketIO · eventlet</span></div>
+        <div><span class="tc">database </span><span class="th">PostgreSQL · автоочистка каждые 5 минут</span></div>
+        <div><span class="tc">realtime </span><span class="th">WebSocket (Socket.IO) · persistent connection</span></div>
+        <div><span class="tc">frontend </span><span class="th">Vanilla JS · CSS3 · Web APIs · no frameworks</span></div>
+        <div><span class="tc">push     </span><span class="th">Web Push API · VAPID · service worker</span></div>
+        <div><span class="tc">crypto   </span><span class="th">ECDH P-256 + AES-GCM 256 · end-to-end</span></div>
+        <div><span class="tc">mobile   </span><span class="th">PWA · Android TWA · signed APK</span></div>
+        <div><span class="tc">deploy   </span><span class="th">Railway · Singapore · HTTPS / TLS</span></div>
+      </div>
+    </div>
+
+    <div class="tech-grid">
+      <div class="tech-item"><div class="tech-n">WebSocket</div><div class="tech-d">Постоянное соединение. Мгновенная доставка без polling.</div></div>
+      <div class="tech-item"><div class="tech-n">E2E Crypto</div><div class="tech-d">ECDH обмен ключами + AES-GCM для приватного чата.</div></div>
+      <div class="tech-item"><div class="tech-n">Web Push</div><div class="tech-d">VAPID без FCM. Работает на iOS PWA и Android Chrome.</div></div>
+      <div class="tech-item"><div class="tech-n">PostgreSQL</div><div class="tech-d">Временное хранилище. Каждые 5 минут старые данные удаляются.</div></div>
+      <div class="tech-item"><div class="tech-n">PWA</div><div class="tech-d">Добавьте на экран — работает как нативное приложение.</div></div>
+      <div class="tech-item"><div class="tech-n">Android TWA</div><div class="tech-d">Trusted Web Activity. Нативный APK без WebView-обёртки.</div></div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot-logo">ТЕ<em>Н</em>Ь</div>
+    <div class="foot-links">
+      <a href="index.html" data-t="nav_home">ГЛАВНАЯ</a>
+      <a href="features.html" data-t="nav_features">ФУНКЦИИ</a>
+      <a href="download.html" data-t="nav_download">СКАЧАТЬ</a>
+      <a href="privacy.html" data-t="nav_privacy">ПРИВАТНОСТЬ</a>
+      <a href="terms.html" data-t="nav_terms">УСЛОВИЯ</a>
+    </div>
+    <div class="foot-copy" data-t="foot_copy">© 2026 ТЕНЬ · ten-app.ru</div>
+  </footer>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>

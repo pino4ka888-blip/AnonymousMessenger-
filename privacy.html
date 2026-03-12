@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Конфиденциальность — ТЕНЬ</title>
+<meta name="theme-color" content="#080a0f">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="shared.css">
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <svg width="32" height="32" viewBox="0 0 100 100" fill="none"><rect width="100" height="100" rx="22" fill="#080a0f"/><path d="M36 47C36 34 64 34 64 47" stroke="rgba(0,229,160,.2)" stroke-width="13" stroke-linecap="round" fill="none"/><path d="M36 47C36 34 64 34 64 47" stroke="#00e5a0" stroke-width="5.5" stroke-linecap="round" fill="none"/><rect x="27" y="46" width="46" height="33" rx="9" fill="#0e1117" stroke="#00e5a0" stroke-width="2.5"/><circle cx="50" cy="60" r="5.5" fill="#00e5a0" opacity=".9"/><rect x="47.8" y="60" width="4.4" height="8" rx="1.5" fill="#080a0f"/><text x="50" y="92" font-family="JetBrains Mono,monospace" font-size="15" font-weight="700" letter-spacing="3" fill="#00e5a0" text-anchor="middle">ТЕНЬ</text></svg>
+    <span class="nav-wordmark">ТЕ<em>Н</em>Ь</span>
+  </a>
+  <div class="nav-center" id="nav-center">
+    <a href="index.html" data-t="nav_home">ГЛАВНАЯ</a>
+    <a href="about.html" data-t="nav_about">О ПРОЕКТЕ</a>
+    <a href="features.html" data-t="nav_features">ФУНКЦИИ</a>
+    <a href="download.html" data-t="nav_download">СКАЧАТЬ</a>
+    <a href="privacy.html" class="active" data-t="nav_privacy">ПРИВАТНОСТЬ</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-switch"><button id="btn-ru" onclick="setLang('ru')" class="on">RU</button><button id="btn-en" onclick="setLang('en')">EN</button></div>
+    <a class="nav-cta" href="https://ten-app.ru" target="_blank" data-t="nav_open">ОТКРЫТЬ →</a>
+    <button class="nav-burger" id="burger"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
+</nav>
+
+<div class="page-wrap">
+<div class="prose-wrap">
+
+  <h1 data-t="pr_h1">Политика конфиденциальности</h1>
+  <div class="prose-date" data-t="pr_date">Последнее обновление: март 2026 · Действует с момента публикации</div>
+
+  <div class="prose-callout">
+    <p data-t="pr_call"><strong>Главный принцип:</strong> ТЕНЬ создана с одной целью — анонимное общение без следов. Мы не знаем, кто вы, и намеренно избегаем получения этой информации.</p>
+  </div>
+
+  <h2 data-t="pr_h2_1">Что мы НЕ собираем</h2>
+  <ul>
+    <li data-t="pr_l1">Имена, email, номера телефонов — регистрации нет</li>
+    <li data-t="pr_l2">IP-адреса пользователей — не сохраняются в базе данных</li>
+    <li data-t="pr_l3">Геолокация — нет запроса и нет доступа</li>
+    <li data-t="pr_l4">Список контактов устройства — не используется</li>
+    <li data-t="pr_l5">Идентификационные cookies — не устанавливаются</li>
+    <li data-t="pr_l6">Рекламные идентификаторы — не используются</li>
+  </ul>
+
+  <h2 data-t="pr_h2_2">Что хранится и как долго</h2>
+  <ul>
+    <li data-t="pr_s1"><strong>Сообщения</strong> — хранятся максимум 5 минут, затем удаляются автоматически</li>
+    <li data-t="pr_s2"><strong>Голосовые сообщения и файлы</strong> — те же 5 минут, затем удаляются</li>
+    <li data-t="pr_s3"><strong>Псевдонимы</strong> — только в рамках сессии; анонимные ники удаляются через 5 минут</li>
+    <li data-t="pr_s4"><strong>Профиль (опционально)</strong> — хранится до удаления вами, удаляется в один клик</li>
+    <li data-t="pr_s5"><strong>Push-подписки</strong> — только с вашего согласия, только для уведомлений</li>
+    <li data-t="pr_s6"><strong>Технические логи сервера</strong> — без персональных данных, не более 24 часов</li>
+  </ul>
+
+  <h2 data-t="pr_h2_3">Локальное хранилище на устройстве</h2>
+  <p data-t="pr_p3">Приложение использует localStorage браузера для хранения настроек: список чатов (только коды), профиль, контакты. Эти данные никогда не покидают ваше устройство.</p>
+
+  <h2 data-t="pr_h2_4">Передача данных третьим лицам</h2>
+  <p data-t="pr_p4">Мы не продаём и не монетизируем данные. Реклама отсутствует. Единственное исключение — push-уведомления технически проходят через Apple APNs и Google FCM.</p>
+
+  <h2 data-t="pr_h2_5">Шифрование</h2>
+  <p data-t="pr_p5">Все соединения защищены HTTPS/TLS. При разговоре вдвоём — E2E шифрование ECDH P-256 + AES-GCM 256. В этом режиме сервер видит только зашифрованный поток.</p>
+
+  <h2 data-t="pr_h2_6">Ваши права</h2>
+  <ul>
+    <li data-t="pr_r1">Покиньте комнату — ваши сообщения исчезнут через 5 минут</li>
+    <li data-t="pr_r2">Удалите любое сообщение вручную (долгое нажатие)</li>
+    <li data-t="pr_r3">Удалите профиль в один клик — немедленно удаляется из базы</li>
+    <li data-t="pr_r4">Войдите анонимно — ник генерируется автоматически и удаляется через 5 минут</li>
+  </ul>
+
+  <h2 data-t="pr_h2_7">Юрисдикция</h2>
+  <p data-t="pr_p7">Сервер расположен в Сингапуре (Railway). Сервис предоставляется «как есть». Мы не несём ответственности за содержимое переписки между пользователями.</p>
+
+</div>
+
+  <footer>
+    <div class="foot-logo">ТЕ<em>Н</em>Ь</div>
+    <div class="foot-links">
+      <a href="index.html" data-t="nav_home">ГЛАВНАЯ</a>
+      <a href="terms.html" data-t="nav_terms">УСЛОВИЯ</a>
+      <a href="download.html" data-t="nav_download">СКАЧАТЬ</a>
+    </div>
+    <div class="foot-copy" data-t="foot_copy">© 2026 ТЕНЬ · ten-app.ru</div>
+  </footer>
+</div>
+
+<script src="shared.js"></script>
+</body>
+</html>
