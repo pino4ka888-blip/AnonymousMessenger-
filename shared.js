@@ -63,7 +63,7 @@ const T = {
 
   // how it works
   how_k: { ru:'как это работает', en:'how it works' },
-  how_t: { ru:'Три шага до защищённого чата', en:'Three steps to a secure chat' },
+  how_t: { ru:'Четыре шага до защищённого чата', en:'Four steps to a secure chat' },
   s1_t:  { ru:'Создайте комнату',      en:'Create a room' },
   s1_d:  { ru:'Нажмите «Создать», введите псевдоним или оставьте пустым — система сгенерирует анонимный ник.',
            en:'Click Create, enter a nickname or leave blank — the system generates an anonymous one.' },
@@ -245,7 +245,7 @@ const T = {
   pf_web_s:     { ru:'Открыть онлайн',     en:'Open online' },
 
   // footer
-  foot_copy: { ru:'© 2026 ТЕНЬ · ten-app.ru', en:'© 2026 ТЕНЬ · ten-app.ru' },
+  foot_copy: { ru:'© 2026 ТЕНЬ', en:'© 2026 ТЕНЬ' },
 };
 
 // ── CURRENT LANGUAGE ─────────────────────────────────
