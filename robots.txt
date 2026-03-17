@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pino4ka888-blip.github.io/AnonymousMessenger-/sitemap.xml
