@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Установить ТЕНЬ</title>
+<meta name="description" content="Установите анонимный мессенджер ТЕНЬ на свой телефон за 30 секунд">
+<meta name="theme-color" content="#080a0f">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;500;600;700&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#080a0f; --surface:#0e1117; --panel:#131720;
+  --border:#1a2030; --accent:#00e5a0; --text:#e2e8f0; --muted:#7a8fa8;
+}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Manrope',sans-serif; line-height:1.6;
+  min-height:100vh; overflow-x:hidden;
+}
+
+/* Фоновые волны */
+canvas#bg{position:fixed;inset:0;width:100%;height:100%;opacity:.06;pointer-events:none;z-index:0;}
+
+.wrap{position:relative;z-index:1;max-width:480px;margin:0 auto;padding:40px 24px 60px;}
+
+/* Логотип */
+.logo{
+  font-family:'JetBrains Mono',monospace;
+  font-size:52px;font-weight:700;letter-spacing:10px;
+  color:var(--text);text-align:center;
+  margin-bottom:8px;
+  animation:fadeUp .6s ease both;
+}
+.logo em{font-style:normal;color:var(--accent);text-shadow:0 0 30px rgba(0,229,160,.5);}
+.tagline{
+  text-align:center;font-size:13px;color:var(--muted);
+  letter-spacing:.5px;margin-bottom:40px;
+  animation:fadeUp .6s .1s ease both;
+}
+
+/* QR блок */
+.qr-block{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:20px;padding:28px;text-align:center;
+  margin-bottom:24px;
+  animation:fadeUp .6s .2s ease both;
+}
+.qr-title{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:3px;color:var(--accent);margin-bottom:16px;
+}
+#qr-canvas{
+  display:inline-block;
+  background:#fff;border-radius:12px;
+  padding:12px;margin-bottom:16px;
+}
+.qr-hint{font-size:12px;color:var(--muted);}
+.qr-hint strong{color:var(--text);}
+
+/* URL кнопка */
+.url-btn{
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--panel);border:1px solid rgba(0,229,160,.2);
+  border-radius:12px;padding:12px 16px;margin-bottom:24px;
+  cursor:pointer;transition:all .2s;
+  animation:fadeUp .6s .3s ease both;
+  text-decoration:none;
+}
+.url-btn:hover{border-color:var(--accent);background:rgba(0,229,160,.05);}
+.url-text{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--accent);}
+.url-copy{font-size:11px;color:var(--muted);background:var(--surface);
+  border:1px solid var(--border);border-radius:6px;padding:4px 10px;
+  cursor:pointer;transition:all .15s;white-space:nowrap;flex-shrink:0;}
+.url-copy:hover{border-color:var(--accent);color:var(--accent);}
+.url-copy.copied{border-color:var(--accent);color:var(--accent);}
+
+/* Шаги */
+.steps-title{
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  letter-spacing:3px;color:var(--muted);margin-bottom:16px;
+  animation:fadeUp .6s .4s ease both;
+}
+
+.platform{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;margin-bottom:12px;
+  animation:fadeUp .6s .5s ease both;
+}
+.platform-header{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 16px;cursor:pointer;
+  transition:background .15s;
+}
+.platform-header:hover{background:var(--panel);}
+.platform-icon{
+  width:36px;height:36px;border-radius:10px;
+  background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.platform-icon svg{color:var(--accent);}
+.platform-name{font-size:14px;font-weight:700;color:var(--text);}
+.platform-sub{font-size:11px;color:var(--muted);}
+.platform-arrow{margin-left:auto;color:var(--muted);transition:transform .2s;font-size:18px;}
+.platform.open .platform-arrow{transform:rotate(90deg);}
+
+.platform-steps{
+  display:none;padding:0 16px 16px;
+  border-top:1px solid var(--border);
+}
+.platform.open .platform-steps{display:block;}
+
+.step{
+  display:flex;align-items:flex-start;gap:12px;
+  padding:10px 0;border-bottom:1px solid rgba(255,255,255,.04);
+}
+.step:last-child{border-bottom:none;}
+.step-n{
+  width:22px;height:22px;border-radius:50%;
+  background:rgba(0,229,160,.1);border:1px solid rgba(0,229,160,.2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;
+  color:var(--accent);margin-top:1px;
+}
+.step-text{font-size:13px;color:var(--muted);line-height:1.5;}
+.step-text strong{color:var(--text);}
+
+/* Open button */
+.open-btn{
+  display:block;text-align:center;
+  background:var(--accent);color:#000;
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:2px;padding:16px;border-radius:14px;
+  text-decoration:none;margin-top:24px;
+  transition:all .2s;
+  animation:fadeUp .6s .6s ease both;
+  box-shadow:0 8px 32px rgba(0,229,160,.2);
+}
+.open-btn:hover{background:#00ffb0;transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,229,160,.3);}
+
+/* Footer */
+.footer{
+  text-align:center;margin-top:32px;
+  font-size:11px;color:rgba(122,143,168,.4);
+  font-family:'JetBrains Mono',monospace;letter-spacing:.5px;
+  animation:fadeUp .6s .7s ease both;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(16px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* Пульс на QR */
+.qr-pulse{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:11px;color:var(--accent);margin-top:8px;
+}
+.qr-pulse::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--accent);
+  animation:pulse 2s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div class="wrap">
+
+  <div class="logo">ТЕ<em>Н</em>Ь</div>
+  <div class="tagline">анонимный мессенджер · без регистрации · без следов</div>
+
+  <!-- QR код -->
+  <div class="qr-block">
+    <div class="qr-title">СКАНИРОВАТЬ КАМЕРОЙ</div>
+    <div id="qr-canvas"></div>
+    <div class="qr-hint">Наведи камеру на код — <strong>Safari откроется автоматически</strong></div>
+    <div class="qr-pulse">работает без установки</div>
+  </div>
+
+  <!-- URL -->
+  <div class="url-btn" onclick="copyUrl()">
+    <span class="url-text">web-production-982e.up.railway.app</span>
+    <span class="url-copy" id="copy-btn">Копировать</span>
+  </div>
+
+  <!-- Инструкции -->
+  <div class="steps-title">КАК УСТАНОВИТЬ НА ЭКРАН</div>
+
+  <!-- iPhone -->
+  <div class="platform" id="p-ios">
+    <div class="platform-header" onclick="toggle('p-ios')">
+      <div class="platform-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <rect x="5" y="2" width="14" height="20" rx="3"/>
+          <line x1="12" y1="18" x2="12.01" y2="18"/>
+        </svg>
+      </div>
+      <div>
+        <div class="platform-name">iPhone / iPad</div>
+        <div class="platform-sub">через Safari · 30 секунд</div>
+      </div>
+      <span class="platform-arrow">›</span>
+    </div>
+    <div class="platform-steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-text">Открой ссылку в <strong>Safari</strong> (не Chrome, не Telegram)</div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-text">Нажми кнопку <strong>«Поделиться» ⬆</strong> внизу экрана</div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-text">Выбери <strong>«На экран «Домой»»</strong> в списке</div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-text">Нажми <strong>«Добавить»</strong> — иконка появится на экране</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Android -->
+  <div class="platform" id="p-android">
+    <div class="platform-header" onclick="toggle('p-android')">
+      <div class="platform-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <path d="M6 18V9a6 6 0 0 1 12 0v9"/>
+          <rect x="4" y="9" width="16" height="10" rx="2"/>
+        </svg>
+      </div>
+      <div>
+        <div class="platform-name">Android</div>
+        <div class="platform-sub">через Chrome · 30 секунд</div>
+      </div>
+      <span class="platform-arrow">›</span>
+    </div>
+    <div class="platform-steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-text">Открой ссылку в <strong>Chrome</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-n">2</div>
+        <div class="step-text">Нажми <strong>⋮</strong> (три точки) в правом верхнем углу</div>
+      </div>
+      <div class="step">
+        <div class="step-n">3</div>
+        <div class="step-text">Выбери <strong>«Добавить на главный экран»</strong></div>
+      </div>
+      <div class="step">
+        <div class="step-n">4</div>
+        <div class="step-text">Нажми <strong>«Добавить»</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Браузер -->
+  <div class="platform" id="p-web">
+    <div class="platform-header" onclick="toggle('p-web')">
+      <div class="platform-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/>
+          <line x1="8" y1="21" x2="16" y2="21"/>
+          <line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+      </div>
+      <div>
+        <div class="platform-name">Браузер / Компьютер</div>
+        <div class="platform-sub">установка не нужна</div>
+      </div>
+      <span class="platform-arrow">›</span>
+    </div>
+    <div class="platform-steps">
+      <div class="step">
+        <div class="step-n">1</div>
+        <div class="step-text">Просто нажми кнопку ниже — всё готово</div>
+      </div>
+    </div>
+  </div>
+
+  <a class="open-btn" href="https://web-production-982e.up.railway.app" target="_blank">
+    ОТКРЫТЬ ТЕНЬ →
+  </a>
+
+  <div class="footer">© 2026 ТЕНЬ · анонимность по умолчанию</div>
+
+</div>
+
+<!-- QRCode.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const APP_URL = 'https://web-production-982e.up.railway.app';
+
+// Генерируем QR
+new QRCode(document.getElementById('qr-canvas'), {
+  text: APP_URL,
+  width: 200, height: 200,
+  colorDark: '#00e5a0',
+  colorLight: '#ffffff',
+  correctLevel: QRCode.CorrectLevel.M
+});
+
+// Копировать URL
+function copyUrl(){
+  navigator.clipboard.writeText(APP_URL).then(()=>{
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = 'Скопировано ✓';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent='Копировать'; btn.classList.remove('copied'); }, 2000);
+  });
+}
+
+// Раскрытие секций
+function toggle(id){
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+}
+
+// Матричный фон
+const canvas = document.getElementById('bg');
+const ctx = canvas.getContext('2d');
+const CHARS = 'ТЕНЬ·01';
+const SZ = 13, SPD = 0.35;
+let cols, drops;
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  cols = Math.ceil(canvas.width / SZ);
+  drops = Array.from({length:cols},(_,i)=>-Math.random()*(canvas.height/SZ)*(1+i%4));
+}
+
+function tick(){
+  ctx.fillStyle = 'rgba(8,10,15,0.05)';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+  ctx.font = `bold ${SZ-1}px "JetBrains Mono",monospace`;
+  for(let i=0;i<cols;i++){
+    const r = Math.floor(drops[i]);
+    const ch = CHARS[((r%CHARS.length)+CHARS.length)%CHARS.length];
+    ctx.fillStyle = 'rgba(255,255,255,.9)';
+    ctx.fillText(ch, i*SZ, r*SZ);
+    for(let j=1;j<=8;j++){
+      const a=(1-j/9)*.55;
+      ctx.fillStyle=`rgba(0,229,160,${a})`;
+      const py=(r-j)*SZ;
+      if(py>0) ctx.fillText(CHARS[((r-j)%CHARS.length+CHARS.length)%CHARS.length],i*SZ,py);
+    }
+    drops[i]+=SPD;
+    if(drops[i]*SZ>canvas.height&&Math.random()>.975) drops[i]=0;
+  }
+  requestAnimationFrame(tick);
+}
+resize();
+window.addEventListener('resize',resize);
+tick();
+
+// Авто-раскрываем нужную платформу
+const ua = navigator.userAgent;
+if(/iPhone|iPad/.test(ua)) document.getElementById('p-ios').classList.add('open');
+else if(/Android/.test(ua)) document.getElementById('p-android').classList.add('open');
+else document.getElementById('p-web').classList.add('open');
+</script>
+</body>
+</html>
