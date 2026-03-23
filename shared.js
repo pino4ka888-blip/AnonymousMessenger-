@@ -1,5 +1,5 @@
 // ══════════════════════════════════════════════════════
-//  ТЕНЬ SITE — shared.js
+//  ТЕ<em>Н</em>Ь SITE — shared.js
 // ══════════════════════════════════════════════════════
 
 // ── TRANSLATIONS ─────────────────────────────────────
@@ -32,8 +32,8 @@ const T = {
   why_k:         { ru:'почему тень', en:'why тень' },
   why_t:         { ru:'Приватность —<br>не опция. Архитектура.',
                    en:'Privacy is not<br>a feature. Architecture.' },
-  why_d:         { ru:'Большинство мессенджеров знают ваш телефон, историю, контакты. ТЕНЬ работает иначе — минимум данных по умолчанию.',
-                   en:'Most messengers know your phone, history, contacts. ТЕНЬ works differently — minimum data by design.' },
+  why_d:         { ru:'Большинство мессенджеров знают ваш телефон, историю, контакты. ТЕ<em>Н</em>Ь работает иначе — минимум данных по умолчанию.',
+                   en:'Most messengers know your phone, history, contacts. ТЕ<em>Н</em>Ь works differently — minimum data by design.' },
 
   // feature cards
   f1_t:  { ru:'Без регистрации',       en:'No registration' },
@@ -81,8 +81,8 @@ const T = {
   ab_k:   { ru:'о проекте', en:'about' },
   ab_big: { ru:'«Каждый разговор должен иметь право <em>исчезнуть</em>»',
             en:'«Every conversation deserves the right to <em>disappear</em>»' },
-  ab_p:   { ru:'ТЕНЬ — мессенджер, созданный с нуля с одной идеей: общение не должно оставлять следов без вашего желания. Никаких аккаунтов, никакой истории, никаких метаданных.',
-            en:'ТЕНЬ is a messenger built from scratch with one idea: communication should not leave traces without your consent. No accounts, no history, no metadata.' },
+  ab_p:   { ru:'ТЕ<em>Н</em>Ь — мессенджер, созданный с нуля с одной идеей: общение не должно оставлять следов без вашего желания. Никаких аккаунтов, никакой истории, никаких метаданных.',
+            en:'ТЕ<em>Н</em>Ь is a messenger built from scratch with one idea: communication should not leave traces without your consent. No accounts, no history, no metadata.' },
   ab_prob_k: { ru:'Проблема', en:'Problem' },
   ab_prob_t: { ru:'Современные мессенджеры знают о вас слишком много',
                en:'Modern messengers know too much about you' },
@@ -90,8 +90,8 @@ const T = {
                en:'Telegram stores all history. WhatsApp requires a phone. Signal is device-bound. They all know who you talk to and when.' },
   ab_sol_k:  { ru:'Решение', en:'Solution' },
   ab_sol_t:  { ru:'Минимум данных по архитектуре', en:'Minimum data by architecture' },
-  ab_sol_d:  { ru:'ТЕНЬ не хранит данные дольше необходимого. Комнаты временные. Ники — псевдонимы. Сервер — маршрутизатор, сообщения живут 5 минут.',
-               en:'ТЕНЬ doesn\'t store data longer than necessary. Rooms are temporary. Nicks are pseudonyms. Server is a router — messages live 5 minutes.' },
+  ab_sol_d:  { ru:'ТЕ<em>Н</em>Ь не хранит данные дольше необходимого. Комнаты временные. Ники — псевдонимы. Сервер — маршрутизатор, сообщения живут 5 минут.',
+               en:'ТЕ<em>Н</em>Ь doesn\'t store data longer than necessary. Rooms are temporary. Nicks are pseudonyms. Server is a router — messages live 5 minutes.' },
   tech_k: { ru:'технологии', en:'technology' },
   tech_t: { ru:'Стек', en:'Stack' },
   tech_d: { ru:'Весь проект — несколько сотен строк без фреймворков на фронтенде.',
@@ -99,7 +99,7 @@ const T = {
 
   // features full page
   feat_k: { ru:'полный список', en:'full list' },
-  feat_t: { ru:'Всё что умеет ТЕНЬ', en:'Everything ТЕНЬ can do' },
+  feat_t: { ru:'Всё что умеет ТЕ<em>Н</em>Ь', en:'Everything ТЕ<em>Н</em>Ь can do' },
   feat_d: { ru:'Мессенджер с полным набором функций — без компромисса с приватностью.',
             en:'A full-featured messenger — without compromising privacy.' },
   ff1_t:  { ru:'Сообщения реального времени',  en:'Real-time messages' },
@@ -171,8 +171,8 @@ const T = {
   pr_h1:   { ru:'Политика конфиденциальности', en:'Privacy Policy' },
   pr_date: { ru:'Последнее обновление: март 2026 · Действует с момента публикации',
              en:'Last updated: March 2026 · Effective from date of publication' },
-  pr_call: { ru:'<strong>Главный принцип:</strong> ТЕНЬ создана с одной целью — анонимное общение без следов. Мы не знаем, кто вы, и намеренно избегаем получения этой информации.',
-             en:'<strong>Core principle:</strong> ТЕНЬ was built with one goal — anonymous communication without traces. We don\'t know who you are and deliberately avoid learning this.' },
+  pr_call: { ru:'<strong>Главный принцип:</strong> ТЕ<em>Н</em>Ь создана с одной целью — анонимное общение без следов. Мы не знаем, кто вы, и намеренно избегаем получения этой информации.',
+             en:'<strong>Core principle:</strong> ТЕ<em>Н</em>Ь was built with one goal — anonymous communication without traces. We don\'t know who you are and deliberately avoid learning this.' },
   pr_h2_1: { ru:'Что мы НЕ собираем', en:'What we do NOT collect' },
   pr_l1:   { ru:'Имена, email, номера телефонов — регистрации нет', en:'Names, email addresses, phone numbers — no registration' },
   pr_l2:   { ru:'IP-адреса пользователей — не сохраняются в базе данных', en:'User IP addresses — not stored in the database' },
@@ -214,8 +214,8 @@ const T = {
   // terms
   tm_h1:   { ru:'Условия использования', en:'Terms of Use' },
   tm_date: { ru:'Последнее обновление: март 2026', en:'Last updated: March 2026' },
-  tm_p0:   { ru:'Используя ТЕНЬ, вы принимаете следующие условия. Если вы не согласны — пожалуйста, не используйте сервис.',
-             en:'By using ТЕНЬ you accept these terms. If you disagree — please do not use the service.' },
+  tm_p0:   { ru:'Используя ТЕ<em>Н</em>Ь, вы принимаете следующие условия. Если вы не согласны — пожалуйста, не используйте сервис.',
+             en:'By using ТЕ<em>Н</em>Ь you accept these terms. If you disagree — please do not use the service.' },
   tm_h2_1: { ru:'Разрешено', en:'Permitted' },
   tm_a1:   { ru:'Использовать для личного анонимного общения', en:'Use for personal anonymous communication' },
   tm_a2:   { ru:'Создавать неограниченное количество комнат', en:'Create unlimited rooms' },
@@ -227,7 +227,7 @@ const T = {
   tm_b2:   { ru:'Распространять вредоносный контент, спам, вирусы', en:'Distribute malicious content, spam, viruses' },
   tm_b3:   { ru:'Атаковать, перегружать или взламывать сервис', en:'Attack, overload or hack the service' },
   tm_b4:   { ru:'Выдавать себя за другого человека', en:'Impersonate another person' },
-  tm_b5:   { ru:'Использовать ник «ТЕНЬ» без специального разрешения', en:'Use the nick "ТЕНЬ" without special permission' },
+  tm_b5:   { ru:'Использовать ник «ТЕ<em>Н</em>Ь» без специального разрешения', en:'Use the nick "ТЕНЬ" without special permission' },
   tm_h2_3: { ru:'Ограничение ответственности', en:'Limitation of liability' },
   tm_p3:   { ru:'Сервис предоставляется «как есть». Сообщения удаляются через 5 минут — мы не несём ответственности за потерю данных. Сервис может быть недоступен без предупреждения.',
              en:'Service provided "as is". Messages are deleted after 5 minutes — we are not responsible for data loss. Service may be unavailable without notice.' },
