@@ -28,7 +28,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;height:60px;
 .nav-logo{display:flex;align-items:center;text-decoration:none;cursor:pointer}
 .nav-wordmark{font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;
               letter-spacing:6px;color:var(--text)}
-.nav-wordmark em{font-style:normal;color:var(--accent)}
+.nav-wordmark 
 .nav-center{display:flex;align-items:center;gap:4px}
 .nav-center a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1.5px;
               font-weight:500;color:var(--muted);text-decoration:none;padding:6px 13px;
@@ -132,7 +132,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;
        display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
 .foot-logo{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
            letter-spacing:5px;color:var(--muted)}
-.foot-logo em{font-style:normal;color:var(--accent)}
+.foot-logo 
 .foot-links{display:flex;gap:22px;flex-wrap:wrap}
 .foot-links a{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:1px;
               color:var(--muted);text-decoration:none;transition:color .18s}
@@ -152,6 +152,8 @@ footer{border-top:1px solid var(--border);padding:36px 48px;
   .sec{padding:52px 18px}
   footer{padding:24px 18px;flex-direction:column;align-items:flex-start}
 }
+
+em{font-style:normal!important;color:var(--accent);text-shadow:0 0 20px rgba(0,229,160,.4);}
 </style>
 </head>
 <body>
