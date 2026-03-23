@@ -157,14 +157,14 @@ const T = {
   dl2_t:   { ru:'iPhone PWA', en:'iPhone PWA' },
   dl2_d:   { ru:'Добавьте на экран через Safari. Работает как нативное с уведомлениями.', en:'Add to home screen via Safari. Works like native with notifications.' },
   dl2_how: { ru:'КАК УСТАНОВИТЬ', en:'HOW TO INSTALL' },
-  dl2_s1:  { ru:'1. Откройте ten-app.ru в Safari', en:'1. Open ten-app.ru in Safari' },
+  dl2_s1:  { ru:'1. Откройте приложение по кнопке ниже в Safari', en:'1. Open the app via the button below in Safari' },
   dl2_s2:  { ru:'2. Нажмите кнопку «Поделиться» ⬆', en:'2. Tap the Share button ⬆' },
   dl2_s3:  { ru:'3. Выберите «На экран Домой»', en:'3. Select "Add to Home Screen"' },
   dl2_s4:  { ru:'4. Нажмите «Добавить»', en:'4. Tap "Add"' },
   dl2_btn: { ru:'Открыть в Safari', en:'Open in Safari' },
   dl3_b:   { ru:'ВСЕ БРАУЗЕРЫ', en:'ALL BROWSERS' },
   dl3_t:   { ru:'Веб-версия', en:'Web version' },
-  dl3_d:   { ru:'Работает прямо в браузере на любом устройстве. Установка не нужна.', en:'Works in any browser on any device. No installation needed.' },
+  dl3_d:   { ru:'Работает в любом браузере без установки. Просто нажмите кнопку.', en:'Works in any browser without installation. Just click the button.' },
   dl3_btn: { ru:'Открыть в браузере', en:'Open in browser' },
 
   // privacy page
