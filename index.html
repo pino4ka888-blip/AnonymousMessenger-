@@ -1,42 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>ТЕНЬ — анонимный мессенджер без регистрации</title>
-  <meta name="description" content="Анонимный мессенджер ТЕНЬ. Без регистрации, без следов. Сообщения исчезают через 5 минут. E2E шифрование. Работает на iPhone, Android и в браузере.">
-  <meta name="theme-color" content="#080a0f">
-  <meta name="color-scheme" content="dark">
-  <meta name="robots" content="index, follow">
-  <link rel="canonical" href="https://pino4ka888-blip.github.io/AnonymousMessenger-/index.html">
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pino4ka888-blip.github.io/AnonymousMessenger-/index.html">
-  <meta property="og:title" content="ТЕНЬ — анонимный мессенджер без регистрации">
-  <meta property="og:description" content="Без регистрации, без следов. Сообщения исчезают через 5 минут. E2E шифрование ECDH P-256 + AES-GCM 256.">
-  <meta property="og:image" content="https://pino4ka888-blip.github.io/AnonymousMessenger-/og-image.png">
-  <meta property="og:locale" content="ru_RU">
-  <meta property="og:site_name" content="ТЕНЬ">
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ТЕНЬ — анонимный мессенджер без регистрации">
-  <meta name="twitter:description" content="Без регистрации, без следов. Сообщения исчезают через 5 минут. E2E шифрование ECDH P-256 + AES-GCM 256.">
-  <meta name="twitter:image" content="https://pino4ka888-blip.github.io/AnonymousMessenger-/og-image.png">
-
-  <!-- PWA / Mobile -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="shared.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ТЕНЬ — анонимный мессенджер</title>
+<meta property="og:title" content="ТЕНЬ — анонимный мессенджер">
+<meta property="og:description" content="Без регистрации. Сообщения исчезают через 5 минут.">
+<meta property="og:type" content="website">
+<meta name="description" content="Анонимный мессенджер без регистрации. Сообщения исчезают через 5 минут.">
+<meta name="theme-color" content="#080a0f">
+<meta name="color-scheme" content="dark">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="shared.css">
 </head>
 <body>
 
 <nav>
   <a class="nav-logo" href="index.html">
-    <span class="nav-wordmark">ТЕ<em>Н</em><em>Ь</em></span>
+    <span class="nav-wordmark">ТЕ<em>Н</em>Ь</span>
   </a>
   <div class="nav-center" id="nav-center">
     <a href="index.html" class="active" data-t="nav_home">ГЛАВНАЯ</a>
@@ -50,7 +34,7 @@
       <button id="btn-ru" onclick="setLang('ru')" class="on">RU</button>
       <button id="btn-en" onclick="setLang('en')">EN</button>
     </div>
-    <a class="nav-cta" href="https://web-production-982e.up.railway.app/" target="_blank" data-t="nav_open">ОТКРЫТЬ →</a>
+    <a class="nav-cta" href="https://web-production-982e.up.railway.app" target="_blank" data-t="nav_open">ОТКРЫТЬ →</a>
     <button class="nav-burger" id="burger">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
     </button>
@@ -66,7 +50,7 @@
     <div class="hero-inner">
 
       <div class="hero-badge" data-t="hero_badge">анонимный мессенджер · без регистрации · без следов</div>
-      <h1 class="hero-title">ТЕ<em>Н</em><em>Ь</em></h1>
+      <h1 class="hero-title">ТЕ<em>Н</em>Ь</h1>
       <p class="hero-sub" data-t="hero_sub">Создайте комнату. Поделитесь кодом. Общайтесь.<br>Сообщения исчезают через 5 минут — как будто ничего не было.</p>
 
       <!-- Platform buttons -->
@@ -81,7 +65,7 @@
             <span class="pf-sub" data-t="pf_android_s">Скачать APK</span>
           </div>
         </a>
-        <a class="pf-btn pf-ios" href="https://ten-app.ru" target="_blank">
+        <a class="pf-btn pf-ios" href="https://web-production-982e.up.railway.app" target="_blank">
           <!-- Phone + share icon for iOS PWA -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
             <rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12.01" y2="18"/><polyline points="9 7 12 4 15 7"/><line x1="12" y1="4" x2="12" y2="12"/>
@@ -91,7 +75,7 @@
             <span class="pf-sub" data-t="pf_ios_s">Открыть в Safari</span>
           </div>
         </a>
-        <a class="pf-btn pf-web" href="https://ten-app.ru" target="_blank">
+        <a class="pf-btn pf-web" href="https://web-production-982e.up.railway.app" target="_blank">
           <!-- Monitor/browser icon -->
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="2" y1="7" x2="22" y2="7"/>
@@ -175,7 +159,7 @@
   </div>
 
   <footer>
-    <div class="foot-logo">ТЕ<em>Н</em><em>Ь</em></div>
+    <div class="foot-logo">ТЕ<em>Н</em>Ь</div>
     <div class="foot-links">
       <a href="about.html" data-t="nav_about">О ПРОЕКТЕ</a>
       <a href="features.html" data-t="nav_features">ФУНКЦИИ</a>
