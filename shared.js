@@ -133,6 +133,10 @@ const T = {
   ff10_d: { ru:'Чат размывается при сворачивании. PrintScreen заблокирован в браузере.',
             en:'Chat blurs when minimized. PrintScreen blocked in the browser.' },
   ff11_t: { ru:'Одобрение входа',               en:'Entry approval' },
+  ff13_t: { ru:'E2E-шифрование', en:'E2E Encryption' },
+  ff13_d: { ru:'ECDH P-256 + AES-GCM. Сервер видит только зашифрованные данные. Значок 🔒 в шапке.', en:'ECDH P-256 + AES-GCM. Server sees only encrypted data. Lock icon in the header.' },
+  ff14_t: { ru:'Перенос профиля', en:'Profile Transfer' },
+  ff14_d: { ru:'Передай профиль на новое устройство за 30 секунд по одноразовому коду.', en:'Transfer your profile to a new device in 30 seconds using a one-time code.' },
   ff11_d: { ru:'Администратор одобряет новых участников. Система ожидания с уведомлением.',
             en:'Admin approves new members. Waiting system with notifications.' },
   ff12_t: { ru:'Онлайн-статус',                 en:'Online status' },
@@ -360,3 +364,4 @@ document.addEventListener('DOMContentLoaded', () => {
   initReveal();
   initCursorGlow();
 });
+// ff13, ff14 добавлены
